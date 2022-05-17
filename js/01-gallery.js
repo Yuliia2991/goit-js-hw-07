@@ -29,7 +29,6 @@ galleryEl.addEventListener('click', onGalleryImagesClick);
 function onGalleryImagesClick(e) {
     e.preventDefault();
     if (!e.target.classList.contains('gallery__image')) {
-        onEscKeyClose(e);
         return;
     }
     const originalImageUrl = e.target.dataset.source;
