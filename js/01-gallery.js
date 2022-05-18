@@ -34,19 +34,23 @@ function onGalleryImagesClick(e) {
     const originalImageUrl = e.target.dataset.source;
 
     const lightBoxModal = basicLightbox.create(`
-    <img src="${originalImageUrl}" width="800" height="600">
-`)
+        <img src="${originalImageUrl}" width="800" height="600">`,
+        {
+        onShow: () => {
+            window.addEventListener('keydown', onEscKeyClose);
+        },
+        onClose: () => {
+            window.removeEventListener('keydown', onEscKeyClose);
+        },
+    })
 
     lightBoxModal.show();
-    
-    window.addEventListener('keydown', onEscKeyClose); 
 
     function onEscKeyClose(e) {
         if (e.code === 'Escape') {
             lightBoxModal.close()
         }
     }
-
 }
 
 
